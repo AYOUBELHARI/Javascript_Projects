@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16x16 grid of squares</title>
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(33, 41, 53);
+            color: gainsboro;
+            text-align: center;
+            margin: 2em auto;
+        }
+
+        #button {
+            font: inherit;
+            height: 2.3em;
+            margin: 1.8rem;
+            padding: 0 1em;
+            background-color: rgba(173, 216, 230, 0.203);
+            color: gainsboro;
+            border: 1px rgba(173, 216, 230, 0.203);
+            border-radius: 2px;
+            cursor: pointer;
+            opacity: 0.85;
+        }
+
+        #button:hover {
+            background-color: gainsboro;
+            color: rgb(33, 41, 53);
+            border-color: rgb(33, 41, 53);
+            opacity: 1;
+        }
+
+        #container {
+            --size: 16;
+            --gap: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap);
+            width: min(900px, 97vw);
+            aspect-ratio: 1;
+            margin: 2em auto;    
+        }
+
+        .cell {
+            box-sizing: border-box;
+            /* flex: 0 0 calc(100% / var(--size)); */
+            /* height: calc(100% / var(--size));   */
+            flex: 0 0 calc((100% - (var(--size) - 1) * var(--gap)) / var(--size));
+            height: calc((100% - (var(--size) - 1) * var(--gap)) / var(--size));
+            border: 1px rgba(173, 216, 230, 0.203);
+            border-radius: 2px;
+            background-color: rgba(173, 216, 230, 0.203);
+            opacity: 0.85;
+        }
+
+        .cell:hover {
+            background-color: gainsboro;
+            border-color: gainsboro;
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <button id="button" type="button">New squares</button>
+    <div id="container"></div>
+    <script src="grid.js" defer></script>
+</body>
+</html>
