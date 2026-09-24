@@ -4,11 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <style>
+        :root {
+            --bg: #14171a;
+            --case: #21262c;
+            --case-edge: #2c3339;
+            --screen: #0b1a14;
+            --digit: #7dffb8;
+            --key: #2a3138;
+            --key-hi: #333c44;
+            --key-text: #e7ebee;
+            --op: #ffa53d;
+            --op-key: #3a2c1c;
+            --op-key-hi: #47341f;
+            --eq: #7dffb8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Mono', ui-monospace, monospace;
+            background: var(--bg);
+            color: var(--text);
+            text-align: center;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case {
+            --gap: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+            width: min(320px, 92vw);
+            margin: 2em auto;
+            background: var(--case);
+            border: 1px solid var(--case-edge);
+            border-radius: 22px;
+            padding: 18px;
+        }
+
+        .screen {
+            background: var(--screen);
+            border-radius: 12px;
+            padding: 22px 18px 16px;
+            text-align: right;
+            font-size: clamp(1.7rem, 7vw, 2.2rem);
+            font-weight: 700;
+            color: var(--digit);
+            text-shadow: 0 0 14px rgba(125,255,184,0.35);
+            box-shadow:inset 0 2px 10px rgba(0,0,0,0.6);
+        }
+
+        .key {
+            --size: 4;
+            --gap: 4px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap);
+            width: min(280px, 97vw);
+            aspect-ratio: 1;
+            margin: auto;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: 1.05rem;
+            flex: 0 0 calc((100% - (var(--size) - 1) * var(--gap)) / var(--size));
+            height: calc((100% - (var(--size) - 1) * var(--gap)) / var(--size));
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            color: var(--key-text);
+            background: var(--key);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        button:hover { background: var(--key-hi); }
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0 rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        button[id="+"], button[id="-"], button[id="*"], button[id="/"] {
+            background: var(--op-key);
+            color: var(--op);
+        }
+        button[id="+"]:hover, button[id="-"]:hover,
+        button[id="*"]:hover, button[id="/"]:hover {
+            background: var(--op-key-hi);
+        }
+
+        /* equals key */
+        button[id="="] {
+            background: var(--eq);
+            color: var(--screen);
+            font-weight: 700;
+        }
+        button[id="="]:hover { background: #92ffc6; }
+    </style>
 </head>
 <body>
-    <div class="calculator">
+    <div class="case">
         <div class="screen">0</div>
-        <div class="typing">
+        <div class="key">
             <button id="7">7</button>
             <button id="8">8</button>
             <button id="9">9</button>
